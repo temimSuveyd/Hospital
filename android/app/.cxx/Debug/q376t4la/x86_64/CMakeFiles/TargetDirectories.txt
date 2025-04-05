@@ -1,0 +1,2 @@
+D:/Projects/hospital/android/app/.cxx/Debug/q376t4la/x86_64/CMakeFiles/edit_cache.dir
+D:/Projects/hospital/android/app/.cxx/Debug/q376t4la/x86_64/CMakeFiles/rebuild_cache.dir
