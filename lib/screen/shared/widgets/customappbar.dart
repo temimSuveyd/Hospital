@@ -19,12 +19,13 @@ class Customappbar extends StatelessWidget implements PreferredSizeWidget {
     //final SettingsController controller = Get.put(SettingsController());
 
     return AppBar(
-      backgroundColor:  Colors.blue.shade50,
+      backgroundColor:  Appcolor.primarycolor,
       centerTitle: true,
       title: Text(
         title,
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-            color: Colors.black ,
+            color: Colors.
+            white ,
             fontSize: 20.sp,
             fontFamily: "cairo",
             fontWeight: FontWeight.bold),

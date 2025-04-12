@@ -7,6 +7,7 @@ import 'package:hosptail/core/constant/color.dart';
 import 'package:hosptail/core/functions/send_notification.dart';
 import 'package:hosptail/data/dataScore/remote/complaint_data.dart';
 import 'package:hosptail/data/dataScore/remote/user_data.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/model/complaint_model.dart';
@@ -25,6 +26,7 @@ class ComplaintDetailsEngControllerImp extends ComplaintDetailsEngController {
   ComplaintModel? complaintModel;
   ComplaintData _complaintData = ComplaintData();
   UserData _userData = UserData();
+  Localcontroller local_controler = Get.put(Localcontroller());
   Map<String, dynamic>? complaintData;
   Map<String, dynamic>? userData;
   Statusreqest statusreqest = Statusreqest.success;
@@ -45,8 +47,8 @@ class ComplaintDetailsEngControllerImp extends ComplaintDetailsEngController {
   void deleteComplaint() {
     try {
       Get.defaultDialog(
-        title: "Delete Complaint",
-        middleText: "Are you sure you want to delete this complaint?",
+        title: "Delete Complaint".tr,
+        middleText: "Are you sure you want to delete this complaint?".tr,
         onCancel: () {
           Get.back();
         },
@@ -59,8 +61,8 @@ class ComplaintDetailsEngControllerImp extends ComplaintDetailsEngController {
       );
     } catch (e) {
       Get.snackbar(
-        "Error",
-        "An error occurred while deleting the complaint.",
+        "Error".tr,
+        "$e",
         backgroundColor: Appcolor.primarycolor,
         duration: const Duration(seconds: 2),
       );
@@ -82,9 +84,11 @@ class ComplaintDetailsEngControllerImp extends ComplaintDetailsEngController {
   sendComplaintToContractor() {
     if (complaintStatus == "unmistakable") {
       try {
-        show_dialog("send complaint",
-            "Are you sure you want to send this complaint to the contractor?",
-            () {
+        show_dialog(
+            "send complaint".tr,
+            "Are you sure you want to send this complaint to the contractor?"
+                .tr
+                .tr, () {
           updateEngineerData();
           sendNotification();
         });
@@ -93,7 +97,7 @@ class ComplaintDetailsEngControllerImp extends ComplaintDetailsEngController {
         update();
       }
     } else {
-      show_dialog("send complaint", "you already sent", () {});
+      show_dialog("Worng!".tr, "you already sent".tr, () {});
     }
   }
 
@@ -164,16 +168,18 @@ class ComplaintDetailsEngControllerImp extends ComplaintDetailsEngController {
   Future<dynamic> show_dialog(
       String title, String middleText, void Function() onConfirm) {
     return Get.defaultDialog(
-      title: title,
-      middleText: middleText,
-      onCancel: () {
-        Get.back();
-      },
-      onConfirm: () {
-        onConfirm();
-        Get.back();
-        Get.back();
-      },
-    );
+        title: title,
+        middleText: middleText,
+        backgroundColor: local_controler.isDarkMode
+            ? Appcolor.colorbackground
+            : Appcolor.white,
+        onCancel: () {
+          Get.back();
+        },
+        onConfirm: () {
+          onConfirm();
+          Get.back();
+        },
+        buttonColor: Appcolor.primarycolor);
   }
 }

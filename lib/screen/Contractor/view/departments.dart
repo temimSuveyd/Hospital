@@ -28,7 +28,6 @@ class ContractorDepartments extends StatelessWidget {
             SizedBox(height: 20.h,),
             ListView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
               itemCount:controller. departments.length,
             itemBuilder: (context, index) => DepartmentCard(
             icon: controller.departments[index]["icon"]!,

@@ -45,7 +45,7 @@ class PageCard extends GetView<HomescreencontrollerImp>{
            ),
          ),
         elevation: 6,
-        color:controller.isDarkMode?Appcolor.colorbackground:Colors.white,
+        color:controller.isDarkMode?Appcolor.colorcarddark :Colors.white,
         shadowColor: Colors.grey.shade300,
         child: Padding(
           padding: EdgeInsets.all(15.w),

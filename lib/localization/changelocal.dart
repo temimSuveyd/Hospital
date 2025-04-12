@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hosptail/screen/user/view/setting.dart';
 import '../core/constant/APPtheme.dart';
 import '../core/constant/color.dart';
 import '../services/servieses.dart';
@@ -17,7 +18,7 @@ class Localcontroller extends GetxController {
     appTheme = darkMode ? themearabicDark : themearabic;
     services.sharedPreferences.setBool("darkMode", darkMode);
     Get.changeTheme(appTheme!);
-    update();
+ update();
   }
 
   // عرض نافذة اختيار اللغة

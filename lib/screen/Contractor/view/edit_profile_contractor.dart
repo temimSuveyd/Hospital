@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
 import 'package:hosptail/screen/shared/widgets/auth/customtitleauth.dart';
+import 'package:hosptail/screen/shared/widgets/customappbarapp.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:hosptail/core/constant/Approutes.dart';
 import 'package:hosptail/core/constant/color.dart';
@@ -26,10 +27,7 @@ class ContractorEditprofile extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(EditcprofilecontractorControllerImp());
     return Scaffold(
-      appBar: AppBar(
-        title: Text(""),
-        backgroundColor: Appcolor.primarycolor,
-      ),
+      appBar: CustomAppBarApp(title: "Edit Profile".tr),
       body: GetBuilder<EditcprofilecontractorControllerImp>(
           builder: (controller) => Handlingdataview(
               widget: SingleChildScrollView(
@@ -37,11 +35,6 @@ class ContractorEditprofile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Customappbaruser(title: "Edit Profile".tr),
-                    SizedBox(
-                      height: 13.h,
-                    ),
-                    // 📸 صورة الملف الشخصي مع زر التحميل
                     ProfileImagePicker(
                       status: false,
                       image: "controller.file.value",

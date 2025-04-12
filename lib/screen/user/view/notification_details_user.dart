@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/controller/user/user_notification_details_controller.dart';
+import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:hosptail/screen/shared/widgets/customappbarapp.dart';
 import 'package:hosptail/screen/user/widget/customappbaruser.dart';
 import '../../Contractor/widget/builddetailditem.dart';
-import '../../Contractor/widget/markreadbuttom.dart';
 import '../../Contractor/widget/statusbadge.dart';
 
 class UserNotificationDetails extends StatelessWidget {
@@ -14,9 +15,13 @@ class UserNotificationDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(UserNotificationDetailsControllerImp());
-    return Scaffold(
+    return  GetBuilder<Localcontroller>(
+      builder: (loacl_controller) => Scaffold(
+          backgroundColor: loacl_controller.isDarkMode
+              ? Appcolor.colorbackground
+              : Appcolor.white,
       appBar: CustomAppBarApp(
-        title: '',
+        title: 'notification_details'.tr,
       ),
       body: GetBuilder<UserNotificationDetailsControllerImp>(
         builder: (controller) => Padding(
@@ -25,12 +30,6 @@ class UserNotificationDetails extends StatelessWidget {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 40.h),
-              // الشريط العلوي المخصص
-              Customappbaruser(title: 'notification_details'.tr),
-
-              SizedBox(height: 40.h),
-
               // تفاصيل العنوان
               DetailItem(
                 icon: Icons.title,
@@ -74,6 +73,8 @@ class UserNotificationDetails extends StatelessWidget {
           )),
         ),
       ),
+      ),
+
     );
   }
 }

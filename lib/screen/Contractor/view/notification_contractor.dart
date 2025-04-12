@@ -33,7 +33,6 @@ class ContractorNotification extends StatelessWidget {
                   Customappbaruser(title: "Notification".tr),
                   ListView.builder(
                     shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
                             padding: EdgeInsets.symmetric(vertical: 8.h),
                             itemCount: controller.notifications.length,
                             itemBuilder: (context, index) {

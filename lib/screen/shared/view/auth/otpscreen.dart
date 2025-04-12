@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/constant/Approutes.dart';
+import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../controller/auth/otpverificationcontroller.dart';
@@ -21,7 +23,13 @@ class OTPVerificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  GetBuilder<Localcontroller>(
+        builder: (local_controller) => Scaffold(
+          
+        
+              backgroundColor: local_controller.isDarkMode
+                  ? Appcolor.colorcarddark
+                  : Appcolor.white,
      // backgroundColor: Colors.white,
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -79,7 +87,7 @@ class OTPVerificationPage extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 }

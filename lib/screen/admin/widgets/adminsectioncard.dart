@@ -41,7 +41,7 @@ class AdminSectionCard extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text(
                     sectionData["title"],
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style:  TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Appcolor.primarycolor),
                   ),
                 ],
               ),

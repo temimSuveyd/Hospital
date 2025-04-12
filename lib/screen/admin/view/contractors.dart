@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
+import 'package:hosptail/core/constant/color.dart';
 import 'package:hosptail/data/model/users_model.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:hosptail/screen/shared/widgets/customappbarapp.dart';
 
 import '../../../controller/admin/contractoradmin_controller.dart';
@@ -14,7 +16,11 @@ class AdminContractors extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => ContractoradminControllerImp());
-    return Scaffold(
+    return GetBuilder<Localcontroller>(
+      builder: (local_controller) => Scaffold(
+          backgroundColor: local_controller.isDarkMode
+              ? Appcolor.colorcarddark
+              : Appcolor.white,
       appBar: CustomAppBarApp(
         title: 'contractors'.tr,
       ),
@@ -26,7 +32,6 @@ class AdminContractors extends StatelessWidget {
                   padding: const EdgeInsets.all(10.0),
                   child: ListView.builder(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
                     itemCount:controller.contractorsList.length,
                     itemBuilder: (context, index) {
                       return ContractorCard(
@@ -36,7 +41,7 @@ class AdminContractors extends StatelessWidget {
                     },
                   ),
                 ),
-                statusreqest: controller.statusreqest)),
+                statusreqest: controller.statusreqest),)),
       ),
     );
   }

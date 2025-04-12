@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
+import 'package:hosptail/core/constant/color.dart';
 import 'package:hosptail/data/model/users_model.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:hosptail/screen/shared/widgets/customappbarapp.dart';
 import '../../../controller/admin/usersadmin_controller.dart';
 import '../../user/widget/customappbaruser.dart';
@@ -13,10 +15,12 @@ class AdminUsers extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(UsersadminControllerImp());
-    return Scaffold(
-      appBar: CustomAppBarApp(
-        title: 'Users'.tr,
-      ),
+    return GetBuilder<Localcontroller>(
+      builder: (local_controller) => Scaffold(
+        backgroundColor: local_controller.isDarkMode
+            ? Appcolor.colorbackground
+            : Appcolor.white,
+            appBar: CustomAppBarApp(title: "Users".tr),
       body: GetBuilder<UsersadminControllerImp>(
           builder: (controller) => Handlingdataview(
               widget: ListView(
@@ -24,7 +28,6 @@ class AdminUsers extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.all(16.w),
                     child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: controller.usersList.length,
                       itemBuilder: (context, index) {
@@ -37,7 +40,7 @@ class AdminUsers extends StatelessWidget {
                   ),
                 ],
               ),
-              statusreqest: controller.statusreqest)),
+              statusreqest: controller.statusreqest)),)
     );
   }
 }

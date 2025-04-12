@@ -3,37 +3,37 @@ import 'package:get/get.dart';
 String? inputValid(String type, int max, int min, String val) {
   // تحقق من أن القيمة ليست فارغة
   if (val.isEmpty) {
-    return "هذا الحقل لا يمكن أن يكون فارغًا";
+    return "This field cannot be empty".tr;
   }
 
   // التحقق من النوع
   if (type == "username") {
     if (!GetUtils.isUsername(val)) {
-      return "اسم المستخدم غير صالح";
+      return "Invalid username".tr;
     }
   } else if (type == "email") {
     if (!GetUtils.isEmail(val)) {
-      return "البريد الإلكتروني غير صالح";
+      return "Invalid email".tr;
     }
   } else if (type == "phone") {
     if (!GetUtils.isPhoneNumber(val)) {
-      return "رقم الهاتف غير صالح";
+      return "Invalid phone number".tr;
     }
   } else if (type == "password") {
     if (val.length < min) {
-      return "كلمة المرور يجب أن تكون على الأقل $min حرفًا";
+      return "$min" "Password must be at least characters".tr;
     }
     if (!RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$').hasMatch(val)) {
-      return "كلمة المرور يجب أن تحتوي على أحرف وأرقام";
+      return "Password must contain letters and numbers".tr;
     }
   }
 
   // التحقق من الطول
-  if (val.length < min) {
-    return "القيمة لا يمكن أن تكون أقل من $min حرفًا";
+  if (val.length > min) {
+    return "$min" "Value cannot be greater than characters".tr;
   }
-  if (val.length > max) {
-    return "القيمة لا يمكن أن تكون أكبر من $max حرفًا";
+  if (val.length < max) {
+    return "$min" "Value cannot be less than characters".tr;
   }
 
   return null; // إذا كانت كل الشروط مستوفاة

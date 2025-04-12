@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:hosptail/core/constant/Approutes.dart';
 import 'package:hosptail/core/constant/color.dart';
@@ -21,7 +22,12 @@ class UserEditProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(EditProfileUserControllerImp());
-    return Scaffold(
+    return  GetBuilder<Localcontroller>(
+        builder: (local_controller) => Scaffold(
+          
+              backgroundColor: local_controller.isDarkMode
+                  ? Appcolor.colorcarddark
+                  : Appcolor.white,
       appBar: AppBar(
         title: Text("Edit Profile".tr),
         backgroundColor: Appcolor.primarycolor,
@@ -130,7 +136,7 @@ class UserEditProfilePage extends StatelessWidget {
                   ],
                 ),
               ),
-              statusreqest: controller.statusreqest)),
+              statusreqest: controller.statusreqest))),
     );
   }
 }

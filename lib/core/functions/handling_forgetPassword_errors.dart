@@ -6,7 +6,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
   String errorMessage;
   switch (e.code) {
     case 'invalid-email':
-      errorMessage = 'Invalid email format';
+      errorMessage = 'Invalid email format'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -16,7 +16,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
       ));
 
     case 'user-not-found':
-      errorMessage = 'No user found with this email';
+      errorMessage = 'No user found with this email'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -26,7 +26,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
       ));
 
     case 'missing-android-pkg-name':
-      errorMessage = 'EAndroid package name missing';
+      errorMessage = 'EAndroid package name missing'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -36,7 +36,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
       ));
 
     case 'missing-continue-uri':
-      errorMessage = 'Continue URL missing';
+      errorMessage = 'Continue URL missing'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -45,7 +45,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
         backgroundColor: Appcolor.primarycolor,
       ));
     case 'missing-ios-bundle-id':
-      errorMessage = 'iOS bundle ID missing';
+      errorMessage = 'iOS bundle ID missing'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -54,7 +54,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
         backgroundColor: Appcolor.primarycolor,
       ));
     case 'invalid-continue-uri':
-      errorMessage = 'Invalid continue URL"';
+      errorMessage = 'Invalid continue URL'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -64,7 +64,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
       ));
 
     case 'unauthorized-continue-uri':
-      errorMessage = 'Unauthorized domain for continue URL';
+      errorMessage = 'Unauthorized domain for continue URL'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -73,7 +73,7 @@ void handlingetPassword_errors(FirebaseAuthException e) {
         backgroundColor: Appcolor.primarycolor,
       ));
     case 'network-request-failed':
-      errorMessage = 'Network error occurred';
+      errorMessage = 'Network error occurred'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -83,6 +83,6 @@ void handlingetPassword_errors(FirebaseAuthException e) {
       ));
 
     default:
-      errorMessage = 'forget password failed: ${e.message}';
+      errorMessage = 'forget password failed'.tr;
   }
 }

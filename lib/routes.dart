@@ -11,7 +11,6 @@ import 'package:hosptail/screen/Contractor/view/home_screen_contractor.dart';
 import 'package:hosptail/screen/Contractor/view/notification_contractor.dart';
 import 'package:hosptail/screen/Contractor/view/notification_details_contractor.dart';
 import 'package:hosptail/screen/Engineering%20Department/view/complaint_replyeng.dart';
-import 'package:hosptail/screen/Engineering%20Department/view/add_notifcatin_engineer.dart';
 import 'package:hosptail/screen/Engineering%20Department/view/add_reply_complaint_engineer.dart';
 import 'package:hosptail/screen/Engineering%20Department/view/complainst_engineer.dart';
 import 'package:hosptail/screen/Engineering%20Department/view/complaint_detail_engineer.dart';
@@ -95,9 +94,7 @@ List<GetPage> routes = [
   GetPage(name: Approutes.engineerComplaints, page: () => EngineerComplaints()),
   GetPage(
       name: Approutes.engineerNotification, page: () => EngineerNotification()),
-  GetPage(
-      name: Approutes.engineerAddNotifcation,
-      page: () => EngineerAddNotifcation()),
+
   GetPage(
       name: Approutes.egineerNotificationDetails,
       page: () => EgineerNotificationDetails()),

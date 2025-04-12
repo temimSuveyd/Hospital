@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import '../../../core/constant/Approutes.dart';
 import '../widgets/auth/customchooseLoginButton.dart';
 import '../widgets/customappbarapp.dart';
@@ -13,7 +14,12 @@ class ChooseLoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  GetBuilder<Localcontroller>(
+        builder: (local_controller) => Scaffold(
+           
+              backgroundColor: local_controller.isDarkMode
+                  ? Appcolor.colorcarddark
+                  : Appcolor.white,
       appBar: CustomAppBarApp(title: 'choose_login_method'.tr),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
@@ -43,14 +49,14 @@ class ChooseLoginPage extends StatelessWidget {
 
             // زر الأدمن
             CustomchooseLoginButton(
-              title: 'login_as_admin'.tr,
+              title: 'login as admin'.tr,
               color: Appcolor.primarycolor,
               icon: Icons.admin_panel_settings_outlined,
               onPressed: () => Get.toNamed(Approutes.login),
             ),
           ],
         ),
-      ),
+      ),),
     );
   }
 }

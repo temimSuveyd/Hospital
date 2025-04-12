@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:hosptail/core/constant/color.dart';
 import 'package:hosptail/data/model/complaint_model.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:hosptail/screen/shared/widgets/customappbarapp.dart';
 import '../../../controller/Contractor/complaintscon_controller.dart';
 import '../widget/complaintcardcontaractor.dart';
@@ -16,7 +18,10 @@ class ContractorComplaints extends StatelessWidget {
     Get.lazyPut(
       () => ComplaintscontractorControllerImp(),
     );
-    return Scaffold(
+    return GetBuilder<Localcontroller>(
+      builder: (local_controller) => 
+     Scaffold(
+      backgroundColor: local_controller.isDarkMode? Appcolor.colorbackground  : Appcolor.white,
       appBar: CustomAppBarApp(title: 'Complaints'.tr),
       body: GetBuilder<ComplaintscontractorControllerImp>(
         builder: (controller) => 
@@ -30,6 +35,8 @@ class ContractorComplaints extends StatelessWidget {
            ),
          ),
       ),
+      ),
+
     );
   }
 }

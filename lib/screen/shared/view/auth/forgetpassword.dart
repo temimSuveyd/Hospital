@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
 import 'package:hosptail/core/constant/Approutes.dart';
 import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:hosptail/screen/shared/widgets/customappbar.dart';
 
 import '../../../../controller/auth/forgetpassword_controller.dart';
@@ -23,10 +24,15 @@ class Forgetpasswordpage extends StatelessWidget {
   // final SettingsController controllersett = Get.put(SettingsController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  GetBuilder<Localcontroller>(
+        builder: (local_controller) => Scaffold(
+        
+              backgroundColor: local_controller.isDarkMode
+                  ? Appcolor.colorcarddark
+                  : Appcolor.white,
       // backgroundColor: Colors.white,
       appBar: Customappbar(
-        title: "Forget Password".tr,
+        title: "forget password".tr,
       ),
       body: GetBuilder<ForgetpasswordControllerImp>(
           builder: (controller) => Handlingdataview(
@@ -51,7 +57,7 @@ class Forgetpasswordpage extends StatelessWidget {
                             SizedBox(height: 50.h),
 
                             Customtitleauth(
-                                title: "Enter yoru email to reset password"),
+                                title: "Enter your email to reset password".tr),
                             SizedBox(height: 50.h),
                             Customtextformauth(
                               icon: Icons.email,
@@ -90,7 +96,7 @@ class Forgetpasswordpage extends StatelessWidget {
                   ],
                 ),
               ),
-              statusreqest: controller.statusreqest)),
+              statusreqest: controller.statusreqest),),),
     );
   }
 }

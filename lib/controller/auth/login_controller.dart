@@ -101,9 +101,7 @@ class LoginControllerImp extends LoginController {
 //update user access token for firebase notification
       updateUserTokens();
       goToHomePage();
-      statusreqest = Statusreqest.success;
-      update();
-    } on FirebaseAuthException catch (e) {
+     } on FirebaseAuthException catch (e) {
       statusreqest = Statusreqest.success;
       update();
       //تصحيح أخطاء Firebase

@@ -1,19 +1,13 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:hosptail/core/constant/Approutes.dart';
 import '../../../controller/Engineering Department/homescreenengineer_controller.dart';
-import '../../../controller/user/home_screen_user_controller.dart';
-import '../../../controller/user/user_home_controller.dart';
-import '../../../core/constant/color.dart';
+
 import '../../../localization/changelocal.dart';
-import '../../shared/widgets/customappbarapp.dart';
 import '../../shared/widgets/customexitdilaog.dart';
-import '../../user/widget/homepageuser/customnavigatorbottombar.dart';
 import '../widget/homepagescreenengineer/Customnavigatorbottombar.dart';
 
+// ignore: must_be_immutable
 class Engineerhomepage extends StatelessWidget {
   Engineerhomepage({super.key});
 

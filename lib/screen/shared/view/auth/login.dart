@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
 import 'package:hosptail/core/constant/Approutes.dart';
+import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
 
 import '../../../../controller/auth/login_controller.dart';
 import '../../../../core/functions/inputvaild.dart';
@@ -21,7 +23,12 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => LoginControllerImp());
 
-    return Scaffold(
+    return  GetBuilder<Localcontroller>(
+        builder: (local_controller) => Scaffold(
+             
+              backgroundColor: local_controller.isDarkMode
+                  ? Appcolor.colorcarddark
+                  : Appcolor.white,
       body: GetBuilder<LoginControllerImp>(
         builder: (controller) => Handlingdataview(
             widget: SizedBox(
@@ -126,7 +133,7 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
             ),
-            statusreqest: controller.statusreqest),
+            statusreqest: controller.statusreqest),)
       ),
     );
   }

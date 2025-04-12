@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
 import 'package:hosptail/core/constant/Approutes.dart';
 import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
+import 'package:hosptail/screen/shared/widgets/customappbar.dart';
 
 import '../../../../controller/auth/sigup_controller.dart';
 import '../../../../core/functions/inputvaild.dart';
@@ -22,7 +24,12 @@ class SignupPage extends StatelessWidget {
     Get.lazyPut(
       () => SignupControllerImp(),
     );
-    return Scaffold(
+    return  GetBuilder<Localcontroller>(
+        builder: (local_controller) => Scaffold(
+         
+              backgroundColor: local_controller.isDarkMode
+                  ? Appcolor.colorcarddark
+                  : Appcolor.white,
       body: GetBuilder<SignupControllerImp>(
         builder: (controller) => Handlingdataview(
             widget: SizedBox(
@@ -177,7 +184,7 @@ class SignupPage extends StatelessWidget {
                 ],
               ),
             ),
-            statusreqest: controller.statusreqest),
+            statusreqest: controller.statusreqest),),
       ),
     );
   }

@@ -34,7 +34,6 @@ class ContractorEngineers extends StatelessWidget {
                 SizedBox(height: 20.h,),
                 ListView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
                   itemCount: controller.engineers.length,
                   itemBuilder: (context, index) {
                     final engineer = controller.engineers[index];

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hosptail/core/constant/Approutes.dart';
 import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
 
 import '../../../../controller/auth/login_controller.dart';
 import '../../../../controller/auth/resetpassword_controller.dart';
@@ -22,7 +23,12 @@ class Resetpassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return GetBuilder<Localcontroller>(
+        builder: (local_controller) => Scaffold(
+           
+              backgroundColor: local_controller.isDarkMode
+                  ? Appcolor.colorcarddark
+                  : Appcolor.white,
      // backgroundColor: Colors.white,
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -86,7 +92,7 @@ class Resetpassword extends StatelessWidget {
                     },),
                      SizedBox(height: 20.h),
                     // Sign Up Redirect
-                    Customrowsighuporloginredirct(textone: " Don't have an account".tr, texttwo:"Sign Up".tr,ontap: () {
+                    Customrowsighuporloginredirct(textone: "Don't have an account".tr, texttwo:"Sign Up".tr,ontap: () {
                       Get.toNamed(Approutes.sighup);
                     },),
 
@@ -96,7 +102,7 @@ class Resetpassword extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ),)
     );
   }
 }

@@ -34,8 +34,6 @@ class HomescreencontrollerImp extends Homescreencontroller{
   ];
   List namepage = [
     {"title": "Home".tr, "icon": Icons.home},
-    //{"title": "AddComplaints".tr, "icon": Icons.add},
-    //{"title": "Complaints".tr, "icon": Icons.list},
     {"title": "Setting".tr, "icon": Icons.settings},
   ];
 

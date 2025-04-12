@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hosptail/core/class/handlingDataView.dart';
-import '../../../controller/Engineering Department/profileengineer_controller.dart';
+import 'package:hosptail/core/constant/color.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import '../../../controller/admin/adminprofilecontroller.dart';
-import '../../../controller/user/user_profile_controller.dart';
-import '../../../core/constant/color.dart';
-import '../../../localization/changelocal.dart';
+
 import '../../shared/widgets/ProfileOptionWidget.dart';
 import '../../shared/widgets/customappbarapp.dart';
-import '../../shared/widgets/customdilogdelete.dart';
 import '../../shared/widgets/customemailprofile.dart';
-import '../../shared/widgets/customlogout.dart';
 import '../../shared/widgets/customtitleprofile.dart';
-import '../widgets/contractro_profile.dart';
 import '../widgets/imageprofile.dart';
 
 class AdminProfile extends StatelessWidget {
@@ -21,8 +17,12 @@ class AdminProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.lazyPut(() => AdminprofilecontrollerImp());
 
-    return Scaffold(
-      appBar: const CustomAppBarApp(title: "Profile"),
+    return GetBuilder<Localcontroller>(
+      builder: (local_controller) => Scaffold(
+          backgroundColor: local_controller.isDarkMode
+              ? Appcolor.colorcarddark
+              : Appcolor.white,
+      appBar: CustomAppBarApp(title: "Profile".tr),
       body: GetBuilder<AdminprofilecontrollerImp>(
           builder: (controller) => Handlingdataview(
               widget: SingleChildScrollView(
@@ -48,13 +48,28 @@ class AdminProfile extends StatelessWidget {
                         email: controller.userEmail ?? "",
                       ),
                       SizedBox(height: 30.h),
-                      // صندوق القائمة مع تأثير الزجاج
-                      Containerprofile()
+                      ProfileOptionWidget(
+                        icon: Icons.edit,
+                        title: "Edit Profile".tr,
+                        onTap:() {
+                          controller.gotoeditprofilepage();
+                        },
+                        iconColor: Colors.blue,
+                      ),
+
+                      ProfileOptionWidget(
+                        icon: Icons.delete,
+                        title: "Delete Account".tr,
+                        onTap: () =>
+                            controller.deleteAccount(), // ✅ استدعاء دالة الحذف
+                        iconColor: Colors.red,
+                        textColor: Colors.red,
+                      ),
                     ],
                   ),
                 ),
               ),
-              statusreqest: controller.statusreqest)),
+              statusreqest: controller.statusreqest))),
     );
   }
 }

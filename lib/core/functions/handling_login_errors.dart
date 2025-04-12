@@ -6,7 +6,7 @@ void handling_login_errors(FirebaseAuthException e) {
   String errorMessage;
   switch (e.code) {
     case 'weak-password':
-      errorMessage = 'Password too weak (min 6 chars)';
+      errorMessage = 'Password too weak (min 6 chars)'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -16,7 +16,7 @@ void handling_login_errors(FirebaseAuthException e) {
       ));
 
     case 'invalid-email':
-      errorMessage = 'Invalid email format';
+      errorMessage = 'Invalid email format'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -26,7 +26,7 @@ void handling_login_errors(FirebaseAuthException e) {
       ));
 
     case 'email-already-in-use':
-      errorMessage = 'Email already registered';
+      errorMessage = 'Email already registered'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -36,7 +36,7 @@ void handling_login_errors(FirebaseAuthException e) {
       ));
 
     case 'operation-not-allowed':
-      errorMessage = 'Email login is not enabled';
+      errorMessage = 'Email login is not enabled'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,
@@ -46,7 +46,7 @@ void handling_login_errors(FirebaseAuthException e) {
       ));
 
     case 'network-request-failed':
-      errorMessage = 'Network error. Check your connection.';
+      errorMessage = 'Network error. Check your connection.'.tr;
 
       Get.showSnackbar(GetSnackBar(
         title: "Error".tr,

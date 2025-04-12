@@ -29,7 +29,6 @@ class EngineerComplaintReply extends StatelessWidget {
 
          ListView.builder(
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
               // itemCount: complaintsList.length,
               itemBuilder: (context, index) =>

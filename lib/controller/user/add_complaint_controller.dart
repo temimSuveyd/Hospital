@@ -9,6 +9,7 @@ import 'package:hosptail/core/constant/color.dart';
 import 'package:hosptail/core/functions/send_notification.dart';
 import 'package:hosptail/data/dataScore/remote/complaint_data.dart';
 import 'package:hosptail/data/dataScore/remote/user_data.dart';
+import 'package:hosptail/localization/changelocal.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -51,6 +52,7 @@ class AddComplaintControllerImp extends AddComplaintController {
   ];
   List<String> locations = ["a", "b", "c", "d"];
   Statusreqest statusreqest = Statusreqest.success;
+  Localcontroller local_controller = Get.put(Localcontroller());
   @override
   void submitComplaint() {
     String complaintTitle = titleController.text.trim();
@@ -74,17 +76,18 @@ class AddComplaintControllerImp extends AddComplaintController {
         useraccessToken!,
       );
       getAllEngineers();
-
-      Get.back();
       Get.defaultDialog(
-          title: "The complaint was sent somehow",
-          middleText: "",
-          actions: [LottieBuilder.asset(AppImagesasset.success)],
-          backgroundColor: Appcolor.colorbackground,
-          onConfirm: () {
-            Get.back();
-          },
-          buttonColor: Appcolor.primarycolor);
+        title: "The complaint was sent somehow",
+        middleText: "",
+        actions: [LottieBuilder.asset(AppImagesasset.success)],
+        backgroundColor: local_controller.isDarkMode
+            ? Appcolor.colorbackground
+            : Appcolor.white,
+        onConfirm: () {
+          Get.back();
+        },
+        buttonColor: Appcolor.primarycolor,
+      );
 
       statusreqest = Statusreqest.success;
       update();
@@ -135,9 +138,8 @@ class AddComplaintControllerImp extends AddComplaintController {
     try {
       _userData.getAllEngineersData(complaintDepartment).then((value) {
         engineersData = value.docs;
-      sendNotificationForEngineers();
+        sendNotificationForEngineers();
       });
-
 
       statusreqest = Statusreqest.success;
       update();

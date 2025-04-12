@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:hosptail/core/constant/color.dart';
 
 import '../../../controller/user/user_profile_controller.dart';
 import '../../../localization/changelocal.dart';
 import '../../shared/widgets/ProfileOptionWidget.dart';
-import '../../shared/widgets/customdilogdelete.dart';
-import '../../shared/widgets/customlogout.dart';
+
 
 class Containeruserprofile extends GetView<UserprofileControllerImp> {
   const Containeruserprofile({super.key});
@@ -17,7 +17,7 @@ class Containeruserprofile extends GetView<UserprofileControllerImp> {
       builder: (controllerloc) => Container(
         padding: EdgeInsets.only(bottom: 20.h, top: 10.h),
         decoration: BoxDecoration(
-          color: controllerloc.isDarkMode ? Colors.black : Colors.white.withOpacity(0.2),
+          color: controllerloc.isDarkMode ? Appcolor.colorbackground : Colors.white.withOpacity(0.2),
           borderRadius: BorderRadius.circular(15.r),
           boxShadow: [
             BoxShadow(color: Colors.blue.shade50, blurRadius: 6.r, spreadRadius: 2.r),
@@ -37,7 +37,7 @@ class Containeruserprofile extends GetView<UserprofileControllerImp> {
             ProfileOptionWidget(
               icon: Icons.delete,
               title: "Delete Account".tr,
-              onTap: () => _showDeleteDialog(controller), // ✅ استدعاء دالة الحذف
+              onTap: () => controller.deleteAccount() , // ✅ استدعاء دالة الحذف
               iconColor: Colors.red,
               textColor: Colors.red,
             ),
@@ -46,9 +46,7 @@ class Containeruserprofile extends GetView<UserprofileControllerImp> {
       ),
     );
   }
+  }
+
 
   /// **نافذة تأكيد حذف الحساب**
-  void _showDeleteDialog(UserprofileControllerImp controller) {
-    Get.dialog(DeleteAccountDialog(onConfirm: controller.deleteAccount));
-  }
-}
