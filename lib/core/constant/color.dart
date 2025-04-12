@@ -6,7 +6,7 @@ Localcontroller dark_controller = Get.put(Localcontroller());
 class Appcolor {
   static const Color grey = Colors.grey;
   static Color? grey2 = Colors.grey[200];
-  static Color primarycolor = Colors.blue.shade400;
+  static Color primarycolor = const Color(0xFF5AC5C8);
   static const Color black = Colors.black;
   static Color colorcarddark = Colors.grey.shade800;
   static Color colorbackground =
